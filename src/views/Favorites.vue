@@ -201,12 +201,4 @@ export default {
 .nestable [draggable="true"] {
   cursor: move;
 }
-
-.nestable-handle {
-  display: inline;
-}
-
-/*.placeholder {*/
-/*  text-align: center;*/
-/*}*/
 </style>

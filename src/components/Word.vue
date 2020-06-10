@@ -2,7 +2,9 @@
   <div class="word-item">
     <div class="word-item__header">
       <VueNestableHandle v-if="canMove" class="word-item__left" :item="word">
-        =
+        <svg class="word-item__icon" aria-hidden="true" focusable="false" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+          <path fill="currentColor" d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"></path>
+        </svg>
       </VueNestableHandle>
 
       <div class="word-item__center" @click="isOpen = !isOpen">
@@ -100,6 +102,7 @@ export default {
   background-color: #fff;
   margin-bottom: 10px;
 
+
   &__header {
     display: flex;
     justify-content: space-between;
@@ -107,8 +110,14 @@ export default {
   }
 
   &__left {
-    /*pad*/
     padding: 0 20px;
+    display: flex;
+    align-items: center;
+  }
+
+  &__icon {
+    width: 16px;
+    height: 16px;
   }
 
   &__right {

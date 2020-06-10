@@ -7,12 +7,8 @@
     <template v-slot:sidebar>
       <Field v-model="field" @click="getWords" />
 
-
-      <ul class="autocomplete">
-        <li
-          v-for="word in autocomplete"
-          :key="word"
-        >
+      <ul class="autocomplete" v-if="autocomplete.length > 0">
+        <li class="autocomplete__item" v-for="word in autocomplete" :key="word">
           <a href="#" @click.prevent="field = word">{{ word }}</a>
         </li>
       </ul>
@@ -20,10 +16,9 @@
 
     <template v-slot:main>
       <template v-if="list.length === 0">
-        <b v-if="field.length === 0">Введите слово для поиска</b>
-        <b v-else-if="status === 'loading'">Загрузка...</b>
+        <b v-if="status === 'loading'">Загрузка...</b>
         <b v-else-if="status === 'error'">Ошибка!</b>
-        <b v-else>Не найдено</b>
+        <b v-else>Введите слово для поиска</b>
       </template>
       <Word
         v-else
@@ -63,6 +58,9 @@ export default {
     field(value) {
       if (value.length > 0) {
         this.debouncedGetWords();
+      } else {
+        this.autocomplete = [];
+        this.list = [];
       }
     },
   },
@@ -98,11 +96,6 @@ export default {
         .then((json) => {
           this.status = null;
 
-          // this.list = json.map(item => ({
-          //   uuid: item.meta.uuid,
-          //   ...item,
-          // }));
-
           if (typeof json[0] === 'string') {
             this.autocomplete = json;
           } else {
@@ -115,8 +108,7 @@ export default {
         })
         .catch((e) => {
           this.status = 'error';
-
-          console.log(e);
+          console.error(e);
           // setTimeout(() => {
           //   this.status = null;
           // }, 2000);

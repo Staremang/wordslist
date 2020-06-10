@@ -60,6 +60,7 @@ export default {
 .sidebar-block {
   background-color: #fff;
   padding: 20px;
+  margin-bottom: 20px;
 }
 
 </style>
