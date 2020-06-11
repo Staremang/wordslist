@@ -1,7 +1,7 @@
 <template>
   <Inner>
     <template v-slot:top>
-      <h1>Поиск слов</h1>
+      <h1>Поиск слов (eng)</h1>
     </template>
 
     <template v-slot:sidebar>

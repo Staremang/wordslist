@@ -3,6 +3,7 @@
     <input
       class="input-field__input" type="text"
       :value="value"
+      placeholder="Search"
       @input="$emit('input', $event.target.value)"
     >
     <button
